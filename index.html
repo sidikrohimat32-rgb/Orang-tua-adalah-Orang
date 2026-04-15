@@ -8,21 +8,21 @@
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
         
-        .container { background: white; width: 90%; max-width: 400px; padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); text-align: center; }
+        .container { background: white; width: 95%; max-width: 420px; padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); text-align: center; }
         
         /* Tampilan Menu Utama */
         .grid-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-        .btn-nama { padding: 15px; border: none; background: #4f46e5; color: white; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .btn-nama:hover { background: #3730a3; transform: scale(1.05); }
+        .btn-nama { padding: 18px; border: none; background: #4f46e5; color: white; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.2s; font-size: 1rem; }
+        .btn-nama:hover { background: #3730a3; transform: scale(1.03); }
 
         /* Tampilan Detail (Menu Orang Tua) */
-        .hidden { display: none; }
-        .detail-card { padding: 30px 10px; }
-        .parent-title { color: #64748b; font-size: 0.9rem; margin-bottom: 10px; }
-        .parent-name { font-size: 2rem; font-weight: bold; color: #1e293b; margin-bottom: 25px; }
-        .btn-back { padding: 10px 20px; background: #e2e8f0; border: none; border-radius: 5px; cursor: pointer; color: #475569; font-weight: 600; }
+        .hidden { display: none !important; }
+        .detail-card { padding: 40px 10px; }
+        .parent-title { color: #64748b; font-size: 0.9rem; margin-bottom: 15px; }
+        .parent-name { font-size: 2.2rem; font-weight: bold; color: #1e293b; margin-bottom: 30px; }
+        .btn-back { padding: 12px 25px; background: #e2e8f0; border: none; border-radius: 5px; cursor: pointer; color: #475569; font-weight: 600; }
         
-        h2 { margin-top: 0; color: #1e293b; }
+        h2 { margin-top: 0; color: #1e293b; font-size: 1.5rem; }
     </style>
 </head>
 <body>
@@ -56,3 +56,54 @@
         "Hendra": "Kusuma",
         "Indah": "Rahardjo",
         "Joko": "Slamet"
+    };
+
+    const menuUtama = document.getElementById('halaman-utama');
+    const menuDetail = document.getElementById('halaman-detail');
+    const displayOrangTua = document.getElementById('nama-orang-tua');
+    const displayInfo = document.getElementById('info-teks');
+
+    // Membuat tombol nama di menu utama
+    function initMenu() {
+        const container = document.getElementById('menu-nama');
+        Object.keys(dataKeluarga).forEach(nama => {
+            const btn = document.createElement('button');
+            btn.className = 'btn-nama';
+            btn.textContent = nama;
+            btn.onclick = () => masukKeDetail(nama);
+            container.appendChild(btn);
+        });
+    }
+
+    // Fungsi pindah menu & bicara
+    function masukKeDetail(nama) {
+        const bapak = dataKeluarga[nama];
+        
+        // Update teks di halaman detail
+        displayInfo.textContent = `Orang tua dari ${nama} adalah:`;
+        displayOrangTua.textContent = bapak;
+
+        // Sembunyikan menu utama, munculkan detail
+        menuUtama.classList.add('hidden');
+        menuDetail.classList.remove('hidden');
+
+        // FITUR SUARA (Text-to-Speech)
+        const suara = new SpeechSynthesisUtterance(`Orang tua dari ${nama} adalah ${bapak}`);
+        suara.lang = 'id-ID'; // Bahasa Indonesia
+        suara.rate = 1.0;      // Kecepatan bicara (sedikit pelan agar jelas)
+        window.speechSynthesis.speak(suara);
+    }
+
+    // Fungsi kembali ke daftar nama
+    function kembali() {
+        window.speechSynthesis.cancel(); // Matikan suara jika masih bicara
+        menuDetail.classList.add('hidden');
+        menuUtama.classList.remove('hidden');
+    }
+
+    // Jalankan aplikasi
+    initMenu();
+</script>
+
+</body>
+</html>
