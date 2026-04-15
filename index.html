@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard rido anjing</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 { color: #333; margin-bottom: 20px; }
+
+        /* Kotak Pencarian */
+        #search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        /* Grid Tombol */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            background-color: #4A90E2;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+            transform: translateY(-2px);
+        }
+
+        /* Kotak Hasil */
+        #display-box {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 2px dashed #4A90E2;
+            border-radius: 10px;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .label { font-size: 0.9em; color: #666; }
+        .parent-name { 
+            font-size: 1.4em; 
+            font-weight: bold; 
+            color: #2c3e50; 
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Daftar Teman</h2>
+    
+    <input type="text" id="search-bar" placeholder="Cari nama teman..." onkeyup="filterNames()">
+
+    <div class="btn-grid" id="button-container">
+        </div>
+
+    <div id="display-box">
+        <div id="content-area">
+            <p class="label">Klik nama untuk melihat nama orang tua</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // DATA 10 NAMA (Silahkan ganti di sini)
+    const dataTeman = {
+        "Ridho": "Kamto",
+        "Dimas": "Maryanti",
+        "Afid": "Daliyam",
