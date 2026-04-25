@@ -36,8 +36,8 @@
 
     <div id="halaman-detail" class="hidden">
         <div class="detail-card">
-            <div class="parent-title" id="info-teks">Orang tua Ridho adalah:</div>
-            <div class="parent-name" id="nama-orang-tua">Kamto</div>
+            <div class="parent-title" id="info-teks">Orang tua rizkal adalah:</div>
+            <div class="parent-name" id="nama-orang-tua">tohiron</div>
             <button class="btn-back" onclick="kembali()">← Kembali</button>
         </div>
     </div>
@@ -46,11 +46,7 @@
 <script>
     // DATA 10 ORANG
     const dataKeluarga = {
-        "Ridho": "Kamto",
-        "Dimas": "Maryanti",
-        "Afid": "Daliyam",
-        "Azmi": "Aris",
-        "Regi": "Polisi baik",
+        "Rizkal bije si botak": "Tohiron",
     };
 
     const menuUtama = document.getElementById('halaman-utama');
@@ -83,7 +79,7 @@
         menuDetail.classList.remove('hidden');
 
         // FITUR SUARA (Text-to-Speech)
-        const suara = new SpeechSynthesisUtterance(`Orang tua dari ${nama} adalah ${bapak}`);
+        const suara = new SpeechSynthesisUtterance(`nama Orang tua dari ${nama} menggelegar adalah ${bapak}`);
         suara.lang = 'id-ID'; // Bahasa Indonesia
         suara.rate = 1.0;      // Kecepatan bicara (sedikit pelan agar jelas)
         window.speechSynthesis.speak(suara);
