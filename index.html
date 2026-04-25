@@ -47,6 +47,8 @@
     // DATA 10 ORANG
     const dataKeluarga = {
         "Rizkal bije si botak": "Tohiron",
+        "Gilang saepuloh": "Ajum Jumbo",
+        "Hadin sahidin": "wanwan",
     };
 
     const menuUtama = document.getElementById('halaman-utama');
@@ -79,7 +81,7 @@
         menuDetail.classList.remove('hidden');
 
         // FITUR SUARA (Text-to-Speech)
-        const suara = new SpeechSynthesisUtterance(`nama Orang tua dari ${nama} menggelegar adalah ${bapak}`);
+        const suara = new SpeechSynthesisUtterance(`nama Orang tua dari ${nama} adalah ${bapak}`);
         suara.lang = 'id-ID'; // Bahasa Indonesia
         suara.rate = 1.0;      // Kecepatan bicara (sedikit pelan agar jelas)
         window.speechSynthesis.speak(suara);
