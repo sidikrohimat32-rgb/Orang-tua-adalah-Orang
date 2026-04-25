@@ -46,9 +46,7 @@
 <script>
     // DATA 10 ORANG
     const dataKeluarga = {
-        "Rizkal bije si botak": "entis sutisna",
-        "Gilang saepuloh": "Ajum Jumbo",
-        "Hadin sahidin": "wanwan",
+        "Rizkal bije si botak": "Tohiron",
     };
 
     const menuUtama = document.getElementById('halaman-utama');
@@ -73,7 +71,7 @@
         const bapak = dataKeluarga[nama];
         
         // Update teks di halaman detail
-        displayInfo.textContent = `Orang tua dari ${nama} adalah:`;
+        displayInfo.textContent = `Orang tua dari ${nama} menggelegar adalah:`;
         displayOrangTua.textContent = bapak;
 
         // Sembunyikan menu utama, munculkan detail
